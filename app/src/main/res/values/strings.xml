@@ -6,4 +6,5 @@
     <string name="smaller">Smaller</string>
     <string name="yes_you_got_it">Yes, you got it</string>
     <string name="dialog_title">Message</string>
+    <string name="title_activity_material">MaterialActivity</string>
 </resources>
