@@ -1,11 +1,11 @@
 package com.west.pratice.guess
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_material.*
 import kotlinx.android.synthetic.main.content_material.*
 
@@ -22,15 +22,16 @@ class MaterialActivity : AppCompatActivity() {
             AlertDialog.Builder(this)
                 .setTitle("Replay game")
                 .setMessage("Are you sure?")
-                .setPositiveButton(getString(R.string.ok),{dialog, which ->
+                .setPositiveButton(getString(R.string.ok), { dialog, which ->
                     secretNumber.reset()
                     counter.setText(secretNumber.count.toString())
                     number.setText("")
                 })
-                .setNeutralButton("Cancel",null)
+                .setNeutralButton("Cancel", null)
                 .show()
         }
         counter.setText(secretNumber.count.toString())
+        Log.d(TAG, "onCreate: " + secretNumber.secret)
     }
 
     fun check(view: View) {
@@ -48,7 +49,13 @@ class MaterialActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle(getString(R.string.dialog_title))
             .setMessage(message)
-            .setPositiveButton(getString(R.string.ok), null)
+            .setPositiveButton(getString(R.string.ok), { dialog, which ->
+                if (diff == 0) {
+                    val intent = Intent(this, RecordActivity::class.java)
+                    intent.putExtra("COUNTER",secretNumber.count)
+                    startActivity(intent)
+                }
+            })
             .show()
     }
 }
