@@ -1,5 +1,6 @@
 package com.west.pratice.guess
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -30,6 +31,7 @@ class MaterialActivity : AppCompatActivity() {
                 .show()
         }
         counter.text = secretNumber.count.toString()
+        Log.d(TAG, "onCreat: ${secretNumber.secretNumber}")
     }
 
     fun check(view: View) {
@@ -47,7 +49,14 @@ class MaterialActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle(getString(R.string.dialog_title))
             .setMessage(message)
-            .setPositiveButton(getString(R.string.ok), null)
+            .setPositiveButton(getString(R.string.ok)) { _, _ ->
+                if (diff == 0) {
+                    val intent = Intent(this, RecordActivity::class.java).apply {
+                        putExtra("COUNTER", secretNumber.count)
+                    }
+                    startActivity(intent)
+                }
+            }
             .show()
     }
 
