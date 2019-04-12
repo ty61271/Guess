@@ -20,7 +20,7 @@ class MaterialActivity : AppCompatActivity() {
         Log.d(TAG, "Secret number:\t${secretNumber.secret}")
 
         fab.setOnClickListener {
-            fab.setBaseAlerDialog(this, getString(R.string.play_game), getString(R.string.are_you_sure)).apply {
+            fab.setBaseAlerDialog(this, getString(R.string.replay_game), getString(R.string.are_you_sure)).apply {
                 setPositiveButton(getString(R.string.ok)) { _, _ ->
                     secretNumber.reset()
                     counter.text = secretNumber.guessCount.toString()

@@ -3,7 +3,7 @@
     <string name="title_activity_material">MaterialActivity</string>
     <string name="please_enter_a_number">Please enter a number</string>
     <string name="ok">OK</string>
-    <string name="play_game">Replay game</string>
+    <string name="replay_game">Replay game</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="cancel">Cancel</string>
     <string name="bigger">Bigger</string>
