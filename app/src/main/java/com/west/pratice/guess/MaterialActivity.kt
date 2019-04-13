@@ -18,7 +18,7 @@ class MaterialActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_material)
         setSupportActionBar(toolbar)
-
+        Log.d(TAG, "onCreate: ")
         fab.setOnClickListener { view ->
             AlertDialog.Builder(this)
                 .setTitle("Replay game")
@@ -37,7 +37,37 @@ class MaterialActivity : AppCompatActivity() {
             .getInt("REC_COUNTER", -1)
         val nick = getSharedPreferences("guess", Context.MODE_PRIVATE)
             .getString("REC_NICKNAME", null)
-        Log.d(TAG, "data: " + count+"/" + nick)
+        Log.d(TAG, "data: " + count + "/" + nick)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart: ")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop: ")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause: ")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "onRestart: ")
+    }
+
+    override fun onPostResume() {
+        super.onPostResume()
+        Log.d(TAG, "onPostResume: ")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy: ")
     }
 
     fun check(view: View) {
