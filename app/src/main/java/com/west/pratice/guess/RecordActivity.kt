@@ -1,6 +1,8 @@
 package com.west.pratice.guess
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_record.*
@@ -19,6 +21,11 @@ class RecordActivity : AppCompatActivity() {
                 .edit()
                 .putInt("REC_COUNTER", count)
                 .putString("REC_NICKNAME", nick)
+                .apply()
+            val intent=Intent()
+            intent.putExtra("NICK",nick)
+            setResult(Activity.RESULT_OK,intent)
+            finish()
         }
     }
 }
